@@ -1,18 +1,19 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        x = len(digits)
-        count=0
-        list1=[]
-        for i in range(x ):
-            z=x-1
-            y=digits[i]*10**z
-            count+=y
-            x-=1
-        p=count+1
-        for j in str(p):
-            list1.append((j))       
-        list1 = [int(i) for i in list1]
-        return list1
+        n = len(digits)
+        carry = 1
+        for i in range(n-1, -1, -1):
+            digits[i] += carry
+            if digits[i] == 10:
+                digits[i] = 0
+                carry = 1
+            else:
+                carry = 0
+                break
+        if carry:
+            digits = [1] + digits
+        return digits
+
         
       
       
