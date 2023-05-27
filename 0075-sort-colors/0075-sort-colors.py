@@ -1,10 +1,9 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        n = len(nums)
-        for i in range(n):
-            min_index = i
-            for j in range(i+1, n):
-                if nums[j] < nums[min_index]:
-                    min_index = j
-            nums[i], nums[min_index] = nums[min_index], nums[i]
+        for i in range(len(nums)):
+            target = i
+            for j in range(i+1, len(nums)):
+                if nums[j] < nums[target]:
+                    target = j
+            nums[i], nums[target] = nums[target], nums[i]
         return nums
