@@ -1,5 +1,5 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
@@ -31,7 +31,4 @@ class Solution(object):
             tail = tail.next
             pointer2=pointer2.next
         return a.next
-    
-
-                
-    
+        
