@@ -1,10 +1,8 @@
 class Solution:
 	def subarraySum(self, nums: List[int], k: int) -> int:
-
 		ans=0
 		prefsum=0
 		d={0:1}
-
 		for num in nums:
 			prefsum = prefsum + num
 
