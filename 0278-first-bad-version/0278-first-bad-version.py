@@ -7,7 +7,7 @@ class Solution:
         high = n
         result = n
         while(low<=high):
-            mid = (high + low)//2
+            mid = low +(high-low)//2
             if isBadVersion(mid):
                 result =  mid
                 high = mid-1
