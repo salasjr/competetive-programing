@@ -2,6 +2,7 @@ class Solution:
     def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
         players.sort()
         trainers.sort()
+        print(trainers)
         l=0
         r=0
         count=0
