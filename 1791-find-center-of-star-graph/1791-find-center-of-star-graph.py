@@ -6,12 +6,8 @@ class Solution:
             return x
         else:
             return y
-        return edges[0][1]
-#         adjst_list = collections.defaultdict(list) 
-#         for x, y in edges:
-#             adjst_list[x].append(y)
-#             adjst_list[y].append(x)
-#         for i in range(len(edges)-1):
+   
+
         
             
        
