@@ -1,28 +1,62 @@
 class Solution:
-    def containsCycle(self, grid: List[List[str]]) -> bool:
-        
-        rows, cols = len(grid), len(grid[0])
-        visited = set()
 
-        def dfs(i, j, parent_i, parent_j, color):
-            if (i, j) in visited:
-                return True
+    def inBound(self, row: int, col: int, grid: List[List[int]]) -> bool:
 
-            visited.add((i, j))
-            directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-
-            for dx, dy in directions:
-                new_i, new_j = i + dx, j + dy
-                if 0 <= new_i < rows and 0 <= new_j < cols and (new_i != parent_i or new_j != parent_j) and grid[new_i][new_j] == grid[i][j]:
-                    if dfs(new_i, new_j, i, j, color):
-                        return True
-
+        if row < 0 or row >= len(grid):
             return False
 
-        for i in range(rows):
-            for j in range(cols):
-                if (i, j) not in visited:
-                    if dfs(i, j, -1, -1, grid[i][j]):
+        if col < 0 or col >= len(grid[0]):
+            return False
+
+        return True
+
+
+
+    def getNeighbors(self, row: int, col: int, grid: List[List[str]]) -> List[Tuple[int]]:
+
+        nbrs = []
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+        for x, y in directions:
+            new_row, new_col = row+x, col+y
+            if self.inBound(new_row, new_col, grid) and grid[row][col] == grid[new_row][new_col]:
+                nbrs.append((new_row, new_col))
+
+        return nbrs
+
+
+    def hasCycle(self, row: int, col: int, last_cell: Tuple[int], grid: List[List[str]], color: List[List[int]]) -> bool:
+
+        if color[row][col] == 1:
+            return True
+
+        if color[row][col] == 2:
+            return False
+
+        color[row][col] = 1
+        for nbr_row, nbr_col in self.getNeighbors(row, col, grid):
+            if (nbr_row, nbr_col) == last_cell:
+                continue
+            if self.hasCycle(nbr_row, nbr_col, (row, col), grid, color):
+                return True
+
+        color[row][col] = 2
+        return False
+
+
+    # O(v + e) time, 
+    # O(v) space,
+    def containsCycle(self, grid: List[List[str]]) -> bool:
+        '''
+            0: neutral, 1: open, 2: closed
+        '''
+        n, m = len(grid), len(grid[0])
+        color = [[0 for _ in range(m)] for _ in range(n)]
+
+        for row in range(n):
+            for col in range(m):
+                if color[row][col] == 0:
+                    if self.hasCycle(row, col, (-1, -1), grid, color):
                         return True
 
         return False
