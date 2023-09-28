@@ -11,14 +11,12 @@ class Solution:
         r=n
         while l <=r:
             m = l + (r-l)//2
-            print(m)
             if guess(m) == 0:
                 return m
             if guess(m) == -1:
-                print("jer")
+
                 r = m-1
             if guess(m) ==1:
-                print("jer2")
                 l = m+1
         return m
                 
