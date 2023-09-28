@@ -3,7 +3,6 @@ class Solution:
         strr= Counter(s)
         count=0
         flag = False
-        print(strr)
         for a,b in strr.items():
             if len(strr) ==1:
                 return b
