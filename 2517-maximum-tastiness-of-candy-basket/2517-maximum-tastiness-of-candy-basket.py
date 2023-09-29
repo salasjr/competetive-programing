@@ -5,7 +5,7 @@ class Solution:
         print(price[-1])
         l, r, ans = 0,price[-1], price[-1]
         while l <= r:
-            mid = (l + r) // 2
+            mid =l +  (r-l) // 2
             cntOfCandies, last = 1, price[0]
 
             for i in range(1, n):
