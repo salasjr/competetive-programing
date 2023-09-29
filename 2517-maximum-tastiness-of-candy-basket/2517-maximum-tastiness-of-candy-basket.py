@@ -2,8 +2,8 @@ class Solution:
     def maximumTastiness(self, price: List[int], k: int) -> int:
         n = len(price)
         price.sort()
-
-        l, r, ans = 0, 10**9, 10**9
+        print(price[-1])
+        l, r, ans = 0,price[-1], price[-1]
         while l <= r:
             mid = (l + r) // 2
             cntOfCandies, last = 1, price[0]
