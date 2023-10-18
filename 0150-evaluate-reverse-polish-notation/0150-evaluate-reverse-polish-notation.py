@@ -1,17 +1,25 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        stack1 = []
-        dick = {"+","-","*","/"}
+        stack = []
+        operators = set(["+", "-", "*", "/"])
 
-        for ele in tokens :
-            if not ele in dick:
-                stack1.append(int(ele))
+        for a in range(len(tokens)):
+            if tokens[a] not in operators:
+                stack.append(int(tokens[a]))
             else:
-                if stack1:
-                    n1 = stack1.pop()
-                    n2 = stack1.pop()
-                    ans = eval(str(n2)+ele+str(n1))
+                if len(stack) < 2:
+                    return None
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+                if tokens[a] == "+":
+                    result = operand1 + operand2
+                elif tokens[a] == "-":
+                    result = operand1 - operand2
+                elif tokens[a] == "*":
+                    result = operand1 * operand2
+                elif tokens[a] == "/":
+                    result = int(operand1 / operand2)
+                stack.append(result)
 
-                stack1.append(int(ans))
+        return stack[0]
 
-        return stack1[0]
