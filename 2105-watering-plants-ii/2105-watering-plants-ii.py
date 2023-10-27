@@ -22,7 +22,7 @@ class Solution:
 
         if plants[j] > bobWater and plants[i] > aliceWater and i == j:
             ans += 1
-            AlicWater = capacityB
+            bobWater = capacityB
 
         return ans
 
