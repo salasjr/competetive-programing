@@ -18,10 +18,11 @@ class Solution:
             bobWater -= plants[j]
             i += 1
             j -= 1
+            print(i,j)
 
         if plants[j] > bobWater and plants[i] > aliceWater and i == j:
             ans += 1
-            bobWater = capacityB
+            AlicWater = capacityB
 
         return ans
 
