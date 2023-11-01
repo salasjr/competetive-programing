@@ -1,26 +1,20 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        red, white, blue = 0, 0, len(nums)-1
-    
-        while white <= blue:
-            if nums[white] == 0:
-                nums[red], nums[white] = nums[white], nums[red]
-                white += 1
-                red += 1
-            elif nums[white] == 1:
-                white += 1
+        s= Counter(nums)
+        i=0
+        for i in range(len(nums)):
+            if s[0]:
+                nums[i]=0
+                s[0]-=1
+            elif s[1]:
+                nums[i]=1
+                s[1]-=1
             else:
-                nums[white], nums[blue] = nums[blue], nums[white]
-                blue -= 1
-
-
-               
-                
-            
-       
-                
-            
-                
+                nums[i]=2
+                s[2]-=1
+            i+=1
+        return nums
+        
                 
                 
         
