@@ -9,5 +9,6 @@ class Solution:
             number = number//10
             reverse = reverse*10 + y
         return reverse == x
-    
+      
+        
         
